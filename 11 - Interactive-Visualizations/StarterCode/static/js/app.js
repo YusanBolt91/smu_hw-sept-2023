@@ -41,32 +41,33 @@ function makeMeta(meta_data) {
   }
 }
 
-function makeGauge(meta_data) {
-  let trace1 = {
-    domain: { x: [0, 1], y: [0, 1] },
-    value: meta_data["wfreq"],
-    title: { text: "Belly Button Washing Frequency" },
-    type: "indicator",
-    mode: "gauge+number+delta",
-    delta: { reference: 5 },
-    gauge: {
-      axis: { range: [null, 10] },
-      steps: [
-        { range: [0, 5], color: "lightgray" },
-        { range: [5, 8], color: "gray" }
-      ],
-      threshold: {
-        line: { color: "orange", width: 4 },
-        thickness: 0.70,
-        value: 9.85
-      }
-    }
-  }
-
-  let traces = [trace1];
-  let layout = {};
-  Plotly.newPlot('gauge', traces, layout);
-
+function makeGauge(meta_data) {   
+  let trace1 = {     
+    domain: { x: [0, 1], y: [0, 1] },     
+    value: meta_data["wfreq"],     
+    title: { text: "Belly Button Washing Frequency" },     
+    type: "indicator",     
+    mode: "gauge+number+delta",     
+    delta: { reference: 5 },      
+    gauge : {         
+      axis: {range: [null, 10], tickwidth: 1, tickcolor: "darkblue"},         
+      bar: {color: "darkblue"},         
+      bgcolor: "white",         
+      borderwidth: 2,         
+      bordercolor: "gray",         
+      steps: [             
+        {range: [0, 5], color: 'cyan'},             
+        {range: [5, 8], color: 'royalblue'}         
+      ],         
+      threshold: [             
+        {line: {'color': "red", 'width': 4}, thickness: 0.75, value: 9.75}       
+      ]     
+    }   
+  }    
+  
+  let traces = [trace1];   
+  let layout = {};   
+  Plotly.newPlot('gauge', traces, layout);  
 }
 
 function makeBar(person_data) {
